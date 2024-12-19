@@ -8,9 +8,9 @@
 
       <!-- Nombre -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Nombre</label>
+        <label for="name" class="col-sm-3 col-form-label">Nombre</label>
         <div class="col-sm-9">
-          <input type="text" formControlName="name" class="form-control" placeholder="Nombre del usuario">
+          <input id="name" type="text" formControlName="name" class="form-control" placeholder="Nombre del usuario">
 
           <span *ngIf="isValidField('name')" class="form-text text-danger">
             Debe de ser en formato de nombre y apellido
@@ -20,9 +20,9 @@
 
       <!-- Email -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Email</label>
+        <label for="email" class="col-sm-3 col-form-label">Email</label>
         <div class="col-sm-9">
-          <input formControlName="email" type="email" class="form-control" placeholder="Email del usuario">
+          <input id="email" formControlName="email" type="email" class="form-control" placeholder="Email del usuario">
           <span *ngIf="isValidField('email')" class="form-text text-danger">
             mensaje de error del email
           </span>
@@ -31,7 +31,7 @@
 
       <!-- Username -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Username</label>
+        <label for="username" class="col-sm-3 col-form-label">Username</label>
         <div class="col-sm-9">
           <input formControlName="username" type="text" class="form-control" placeholder="Nombre código del usuario">
           <span *ngIf="isValidField('username')" class="form-text text-danger">
@@ -42,7 +42,7 @@
 
       <!-- Password -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Password</label>
+        <label for="password" class="col-sm-3 col-form-label">Password</label>
         <div class="col-sm-9">
           <input formControlName="password" type="password" class="form-control" placeholder="Password de su cuenta">
 
@@ -54,7 +54,7 @@
 
       <!-- Password2 -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Confirmar</label>
+        <label for="password2" class="col-sm-3 col-form-label">Confirmar</label>
         <div class="col-sm-9">
           <input formControlName="password2" type="password" class="form-control" placeholder="Confirmar la contraseña">
 
@@ -99,4 +99,4 @@
 <pre>{{ myForm.value.password | json }}</pre>
 
 <h5>Confirmar</h5>
-<pre>{{ myForm.value.password2 | json }}</pre>
+<pre>{{ myForm.controls['password2'].errors| json }}</pre>

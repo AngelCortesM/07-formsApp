@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidatorsService } from '../../../shared/service/validators.service';
 
 @Component({
   standalone: false,
@@ -14,7 +15,10 @@ export class SwitchesPageComponent implements OnInit {
     wantNotifications: false,
   };
 
-  constructor(private readonly fb: FormBuilder) {
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly validatorsService: ValidatorsService
+  ) {
     this.myForm = this.fb.group({
       gender: ['M', [Validators.required]],
       wantNotifications: [true, [Validators.required]],
@@ -27,9 +31,7 @@ export class SwitchesPageComponent implements OnInit {
   }
 
   isValidField(field: string): boolean | null {
-    return (
-      this.myForm.controls[field].errors && this.myForm.controls[field].touched
-    );
+    return this.validatorsService.isValidField(this.myForm, field);
   }
 
   onSave() {
@@ -37,7 +39,7 @@ export class SwitchesPageComponent implements OnInit {
       this.myForm.markAllAsTouched();
       return;
     }
-const {termsAndConditions, ...newPerson} = this.myForm.value;
+    const { termsAndConditions, ...newPerson } = this.myForm.value;
 
     console.log(this.myForm.value);
     this.person = newPerson;
